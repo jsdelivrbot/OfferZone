@@ -3,6 +3,7 @@ myApp.controller("MenuCtrl", ['$scope', '$location', 'MenuFactory',
         $scope.success = false;
         $scope.dateRange = null;
         $scope.offer = {};
+       
 
 
         $scope.menus = '';
@@ -19,7 +20,10 @@ myApp.controller("MenuCtrl", ['$scope', '$location', 'MenuFactory',
         $scope.happyHrs = function($isHappyHr) {
             if ($isHappyHr == true) {
                 $scope.showHappy = true;
+                $scope.offer.isHappyHr=true;
             } else {
+               $scope.offer.happyhour='';
+               $scope.offer.isHappyHr=false;
                 $scope.showHappy = false;
             }
 
