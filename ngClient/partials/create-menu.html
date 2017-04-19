@@ -37,7 +37,7 @@
                      </div>
                      <div class="form-group col-xs-6">
                         <label for="itemName">HeadLine</label>
-                        <input type="text" class="form-control" id="exampleInputEmail1" ng-model="offer.name" placeholder="Enter Name" required>
+                        <input type="text" class="form-control" id="exampleInputEmail1" ng-model="offer.name" placeholder="50% Cashback on Selected brands" required>
                      </div>
                      <div class="form-group">
                         <label>Description</label>
@@ -110,15 +110,71 @@
                                  <option value="4" >OtherDays</option>
                               </select>
                            </div>
-                           <div class="form-group col-xs-3">
-                              <label>Date For Happy hours </label>
-                              <div class="form-group input-group">
-                                 <div class="input-group-addon">
-                                    <i class="fa fa-clock-o"></i>
-                                 </div>
-                                 <input type="text" name="daterange" ng-model="offer.happyhour.daterange" class="form-control pull-right" id="reservationtime">
-                              </div>
+                         
+
+
+                           <div class="form-group col-xs-2">
+                                  <label>Start time </label>
+                           <div class="input-group"
+     moment-picker="offer.happyhour.starttime"
+     format="HH:mm">
+    <span class="input-group-addon">
+         <i class="fa fa-clock-o"></i>
+    </span>
+    <input class="form-control"
+           placeholder="Select a time"
+           ng-model="offer.happyhour.starttime"
+           ng-model-options="{ updateOn: 'blur' }">
+</div>
                            </div>
+
+                               <div class="form-group col-xs-2">
+                                  <label>End time </label>
+                           <div class="input-group"
+     moment-picker="offer.happyhour.endtime"
+     format="HH:mm">
+    <span class="input-group-addon">
+         <i class="fa fa-clock-o"></i>
+    </span>
+    <input class="form-control"
+           placeholder="Select a time"
+           ng-model="offer.happyhour.endtime"
+           ng-model-options="{ updateOn: 'blur' }">
+</div>
+                           </div>
+
+
+                             <div class="form-group col-xs-2">
+                              <label>Start Date </label>
+                             <div class="input-group"
+     moment-picker="offer.happyhour.startdate"
+     format="DD-MM-YYYY">
+    <span class="input-group-addon">
+        <i class="octicon octicon-calendar"></i>
+    </span>
+    <input class="form-control"
+           placeholder="Select a date"
+           ng-model="offer.happyhour.startdate"
+           ng-model-options="{ updateOn: 'blur' }">
+</div>
+                           </div>
+
+                             <div class="form-group col-xs-2">
+                              <label>End Date </label>
+                             <div class="input-group"
+     moment-picker="offer.happyhour.enddate"
+     format="DD-MM-YYYY">
+    <span class="input-group-addon">
+        <i class="octicon octicon-calendar"></i>
+    </span>
+    <input class="form-control"
+           placeholder="Select a date"
+           ng-model="offer.happyhour.enddate"
+           ng-model-options="{ updateOn: 'blur' }">
+</div>
+                           </div>
+
+
                            <div class="form-group" ng-if="showDays==true">
                               <label>Select Days For Happy hours </label>
                               <div class="form-group input-group">
@@ -127,8 +183,28 @@
                                  <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.wednesday" value="">Wednesday</label>
                                  <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.thursday" value="">Thursday</label>
                                  <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.friday" value="">Friday</label>
+                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.saturday" value="">Saturday</label>
+                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.sunday" value="">Sunday</label>
                               </div>
                            </div>
+<div class="form-group col-xs-6">
+      <p>
+
+  <div ng-switch="offer.happyhour.baseday">
+  <div ng-switch-when="2">
+  <p>Every Day</p> 
+  
+  </div>
+  <div ng-switch-when="3">
+   
+    <p>Every Weekend</p>
+  </div>
+</div>
+
+
+{{offer.happyhour.starttime | date:"h a"}}
+      </p>
+</div>
                         </div>
                      </div>
                   </div>
