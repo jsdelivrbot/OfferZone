@@ -2,7 +2,7 @@
    <!-- Main content -->
    <section class="content">
       <div class="row">
-         <div class="col-md-8">
+         <div class="col-md-12">
             <!-- general form elements -->
             <div class="box box-primary">
                <div class="panel-heading">
@@ -84,8 +84,9 @@
                               image="image2" 
                               resize-max-height="300"
                               resize-max-width="250"
-                              resize-quality="0.7" />
-                           <img ng-show="image2" ng-src="{{image2.resized.dataURL}}"/>
+                              resize-quality="0.7" 
+                              ng-model="image"/>
+                           <img class="img-responsive" style="padding:10px;margin-left:55px" ng-show="image2" ng-src="{{image2.resized.dataURL}}"/>
                         </div>
                      </div>
                      <!--  <div class="form-group" ng-hide="">
@@ -103,7 +104,7 @@
                            </div>
                         </div>
                         <div class="panel-body" ng-if="showHappy==true">
-                           <div class="form-group col-xs-4">
+                           <div class="form-group col-xs-3">
                               <label for="sel1">Select Happy Hour Days</label>
                               <select class="form-control" id="sel1" ng-model="offer.happyhour.baseday" ng-change="onCategoryChange(offer.happyhour.baseday) ">
                                  <option ng-selected="true">Select One Day</option>
@@ -112,7 +113,7 @@
                                  <option value="4" >OtherDays</option>
                               </select>
                            </div>
-                           <div class="form-group col-xs-4">
+                           <div class="form-group col-xs-2">
                               <label>Start time </label>
                               <div class="input-group"
                                  moment-picker="offer.happyhour.starttime"
@@ -126,7 +127,7 @@
                                     ng-model-options="{ updateOn: 'blur' }">
                               </div>
                            </div>
-                           <div class="form-group col-xs-4">
+                           <div class="form-group col-xs-2">
                               <label>End time </label>
                               <div class="input-group"
                                  moment-picker="offer.happyhour.endtime"
@@ -140,7 +141,7 @@
                                     ng-model-options="{ updateOn: 'blur' }">
                               </div>
                            </div>
-                           <div class="form-group col-xs-4">
+                           <div class="form-group col-xs-2">
                               <label>Start Date </label>
                               <div class="input-group"
                                  moment-picker="offer.happyhour.startdate"
@@ -154,7 +155,7 @@
                                     ng-model-options="{ updateOn: 'blur' }">
                               </div>
                            </div>
-                           <div class="form-group col-xs-4">
+                           <div class="form-group col-xs-2">
                               <label>End Date </label>
                               <div class="input-group"
                                  moment-picker="offer.happyhour.enddate"
@@ -171,13 +172,13 @@
                            <div class="form-group" ng-if="showDays==true">
                               <label>Select Days For Happy hours </label>
                               <div class="form-group input-group">
-                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.monday" value="">Monday</label>
-                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.tuesday"  value="">Tuesday</label>
-                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.wednesday" value="">Wednesday</label>
-                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.thursday" value="">Thursday</label>
-                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.friday" value="">Friday</label>
-                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.saturday" value="">Saturday</label>
-                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.sunday" value="">Sunday</label>
+                                 <label class="checkbox-inline"><input type="checkbox"  ng-model="offer.happyhour.days.monday" value="">Monday</label>
+                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.days.tuesday"  value="">Tuesday</label>
+                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.days.wednesday" value="">Wednesday</label>
+                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.days.thursday" value="">Thursday</label>
+                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.days.friday" value="">Friday</label>
+                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.days.saturday" value="">Saturday</label>
+                                 <label class="checkbox-inline"><input type="checkbox" ng-model="offer.happyhour.days.sunday" value="">Sunday</label>
                               </div>
                            </div>
                            
@@ -201,13 +202,14 @@
                                         
                                          </p>
                                  </div>
-                                  <div ng-switch-when="3">
-                                    <p class="text-red" > Offer Occurs Every Weekend <span class="badge bg-aqua">{{offer.happyhour.starttime | myFilter }}  </span> to
+                                 <div ng-switch="offer.happyhour.baseday">
+                                 <div ng-switch-when="3">
+                                    <p class="text-red" > <span class="badge bg-red"> Happy hour's  Starts Every Weekend</span>  <span class="badge bg-aqua">{{offer.happyhour.starttime | myFilter }}  </span> to
                                     
                                      <span class="badge bg-red">
-                                        {{offer.happyhour.endtime | myFilter }} 
+                                        {{offer.happyhour.endtime | myFilter }}  
                                         </span>
-
+                                <span class="badge bg-green" >For Time period Of </span>
                                         <span class="badge bg-green"> {{offer.happyhour.startdate | date : "fullDate" }} </span>
 
                                          <span class="badge bg-blue"> {{offer.happyhour.enddate | date : "fullDate" }} </span>
@@ -223,50 +225,7 @@
             <!-- /.box -->
          </div>
 
-         <div class="col-md-4">
-          <!-- Widget: user widget style 1 -->
-          <div class="box box-widget widget-user">
-            <!-- Add the bg color to the header using any of the bg-* classes -->
-            <div class="widget-user-header bg-black" style="background: url('img/photo1.png') center center;">
-             
-              <h5 class="widget-user-desc">Web Designer</h5>
-            </div>
-            <div class="widget-user-image">
-              <img class="img-circle" src="img/user3-128x128.jpg" alt="User Avatar">
-            </div>
-            <div class="box-footer">
-              <div class="row">
-                <p class="text-center"> {{offer.name}}</p>
-                <div class="col-sm-4 border-right">
-                  <div class="description-block">
-                    <h5 class="description-header">3,200</h5>
-                    <span class="description-text">SALES</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4 border-right">
-                  <div class="description-block">
-                    <h5 class="description-header">13,000</h5>
-                    <span class="description-text">FOLLOWERS</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-                <div class="col-sm-4">
-                  <div class="description-block">
-                    <h5 class="description-header">35</h5>
-                    <span class="description-text">PRODUCTS</span>
-                  </div>
-                  <!-- /.description-block -->
-                </div>
-                <!-- /.col -->
-              </div>
-              <!-- /.row -->
-            </div>
-          </div>
-          <!-- /.widget-user -->
-        </div>
+   
 
          <div class="col-md-6">
             <div class="box box-primary">
