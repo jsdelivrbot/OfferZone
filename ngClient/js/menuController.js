@@ -3,6 +3,8 @@ myApp.controller("MenuCtrl", ['$scope', '$location', 'MenuFactory',
         $scope.success = false;
         $scope.dateRange = null;
         $scope.offer = {};
+
+     
        
 
 
@@ -29,8 +31,14 @@ myApp.controller("MenuCtrl", ['$scope', '$location', 'MenuFactory',
 
         }
 
+$scope.$watch('image2', function (newValue, oldValue) {
+   
+    $scope.offer.banner=newValue;
+  });
         $scope.onCategoryChange = function($selval) {
+           $scope.offer.happyhour.days='';
             if ($selval == 4) {
+                 
                 $scope.showDays = true;
             } else {
                 $scope.showDays = false;
@@ -65,6 +73,7 @@ myApp.controller("MenuCtrl", ['$scope', '$location', 'MenuFactory',
                $scope.menu='';
 
               });
+               console.log($scope.offer.banner.dataURL);
              */
 
             console.log($scope.offer);
