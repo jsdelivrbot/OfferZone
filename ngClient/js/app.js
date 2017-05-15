@@ -1,4 +1,4 @@
-var myApp = angular.module('ngclient', ['ngRoute','imageupload']);
+var myApp = angular.module('ngclient', ['ngRoute','ngFileUpload','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
 
 myApp.config(function($routeProvider, $httpProvider) {
 
@@ -17,9 +17,21 @@ myApp.config(function($routeProvider, $httpProvider) {
       access: {
         requiredLogin: true
       }
-    }).when('/page1', {
-      templateUrl: 'partials/page1.html',
-      controller: 'Page1Ctrl',
+    }).when('/question-get', {
+      templateUrl: 'partials/question.html',
+      controller: 'QuestionCtrl',
+      access: {
+        requiredLogin: true
+      }
+    }).when('/exams', {
+      templateUrl: 'partials/exams.html',
+      controller: 'ExamCtrl',
+      access: {
+        requiredLogin: true
+      }
+    }).when('/subject-get', {
+      templateUrl: 'partials/subjects_category.html',
+      controller: 'subjectCtrl',
       access: {
         requiredLogin: true
       }
