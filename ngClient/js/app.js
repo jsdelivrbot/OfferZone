@@ -1,4 +1,4 @@
-var myApp = angular.module('ngclient', ['ngRoute','ngFileUpload','ngAnimate', 'ngSanitize', 'ui.bootstrap']);
+var myApp = angular.module('ngclient', ['ngRoute','ngFileUpload','ngAnimate', 'ngSanitize', 'ui.bootstrap','angular-toasty']);
 
 myApp.config(function($routeProvider, $httpProvider) {
 

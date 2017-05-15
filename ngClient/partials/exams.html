@@ -2,16 +2,18 @@
    <!-- Content Header (Page header) -->
    <section class="content-header">
       <h1>
-         Dash Board <small>Welcome to Yo-Exam</small>
+         Exam's' <small>Welcome to Yo-Exam</small>
       </h1>
       <ol class="breadcrumb">
          <li><a href="#"><i class="fa fa-dashboard"></i> Dashboard</a></li>
          <li class="active">Exams</li>
       </ol>
    </section>
+
+   <toasty></toasty>
    <!-- Main content -->
    <section class="content">
-      <div class="col-md-10">
+      <div class="col-md-12">
          <div class="row">
             <div class="box box-success">
                <div class="box-body">
@@ -42,22 +44,22 @@
                   </div>
                   <div class="form-group col-xs-5">
                      <label for="exampleInputEmail1">Negative Mark </label>
-                     <select ng-model="exam.negativevalue" class="form-control" id="negative">
-                        <option value="0">Do not apply</option>
-                        <option value="0.1">Apply 10% negative marks for this exam</option>
-                        <option value="0.25">Apply 25% negative marks for this exam</option>
+                     <select ng-init="exam.negativevalue=0.1" ng-model="exam.negativevalue" class="form-control" id="negative">
+                        <option value="0" >Do not apply</option>
+                        <option value="1">Apply 1 negative marks for this exam</option>
+                        <!--<option value="0.25">Apply 25% negative marks for this exam</option>
                         <option value="0.33">Apply 33% negative marks for this exam</option>
                         <option value="0.5">Apply 50% negative marks for this exam</option>
                         <option value="0.75">Apply 75% negative marks for this exam</option>
-                        <option value="1">Apply 100% negative marks for this exam</option>
+                        <option value="1">Apply 100% negative marks for this exam</option>-->
                      </select>
                   </div>
                   <div class="form-group col-xs-5">
                      <label for="exampleInputEmail1">Pick Questions </label>
                      <select  ng-model="exam.pickupval" ng-change="manualPickQues(exam.pickupval)" class="form-control" id="getquepickmode">
                         <option value="0">Auto Pick (Different questions for all candidates)</option>
-                        <option value="2">Auto Pick (Same questions for all candidates)</option>
-                        <option value="1">Manual Pick</option>
+                        <option value="1">Auto Pick (Same questions for all candidates)</option>
+                        <option value="2">Manual Pick</option>
                      </select>
                   </div>
                </div>
@@ -84,14 +86,14 @@
                 <tbody>
                     <tr>
                   <th style="width: 10px">#</th>
-                  <th>Task</th>
-                  <th>Progress</th>
+                  <th>Question</th>
+                  <th>Subject</th>
                   <th style="width: 40px">Action</th>
                 </tr>
                 <tr ng-init="$index" ng-repeat="row in data.slice(((currentPage-1)*itemsPerPage), ((currentPage)*itemsPerPage))">
         <td>#{{$index+1}}</td>
         <td>{{row.question}}</td>
-        <td>{{row.question}}</td>
+        <td>{{row.category}}</td>
        <td>  <input type="checkbox" ng-model="checked" ng-click="addQuestions(checked,row)"> </td>
       </tr>
 
