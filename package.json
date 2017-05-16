@@ -6,7 +6,7 @@
   "engines": {
     "node": "6.10.2"
   },
-  "main": "server/server.js",
+  "main": "server.js",
   "scripts": {
     "start": "node server/server.js"
   },
